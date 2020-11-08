@@ -30,7 +30,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(25);
+        $users = User::with('roles')->paginate(25);
+        // return $users;
 
         return view('backend::users.index', compact('users'));
     }

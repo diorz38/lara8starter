@@ -60,4 +60,9 @@ class CustomUser
     {
         return $user->serial_no;
     }
+    public static function laratablesCustomRoles($user)
+    {
+        $roles = $user->roles;
+        return view('backend::users.roles', compact('roles'))->render();
+    }
 }

@@ -45,10 +45,6 @@
             <dd>{{ $user->email }}</dd>
             <dt>Email Verified At</dt>
             <dd>{{ $user->email_verified_at }}</dd>
-            <dt>Password</dt>
-            <dd>{{ $user->password }}</dd>
-            <dt>Remember Token</dt>
-            <dd>{{ $user->remember_token }}</dd>
 
         </dl>
 

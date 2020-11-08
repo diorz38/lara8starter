@@ -41,4 +41,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // public function roles()
+    // {
+    // return $this->belongsToMany(jeremykenedy\LaravelRoles\Models\Role,'appeal_stage','appeal_id','stage_id')->wherePivot('expiration_date','<',Carbon::now())->withTimestamps();
+    // }
 }

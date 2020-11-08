@@ -11,7 +11,7 @@
                     { name: 'serial_no', orderable: false, searchable: false},
                     { name: 'name' },
                     { name: 'email' },
-                    { name: 'created_at' },
+                    { name: 'roles', orderable: false},
                     { name: 'action', orderable: false, searchable:false},
                 ],
             });
@@ -59,7 +59,7 @@
                                     <th>No</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Created At</th>
+                                    <th>Role</th>
                                     <th></th>
                                 </tr>
                             </thead>
