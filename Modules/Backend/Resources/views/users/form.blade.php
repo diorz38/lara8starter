@@ -18,7 +18,7 @@
 <div class="form-group {{ $errors->has('plain_password') ? 'has-error' : '' }}">
     <label for="password" class="col-md-2 control-label">Password</label>
     <div class="col-md-10">
-        <input class="form-control" name="password" type="text" id="password" value="{{ old('plain_password', optional($user)->password) }}" minlength="1" maxlength="255" required="true" placeholder="Enter password here...">
+        <input class="form-control" name="plain_password" type="text" id="plain_password" value="{{ old('plain_password', optional($user)->plain_password) }}" minlength="1" maxlength="255" required="true" placeholder="Enter password here...">
         {!! $errors->first('plain_password', '<p class="help-block">:message</p>') !!}
     </div>
 </div>

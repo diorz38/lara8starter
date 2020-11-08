@@ -66,9 +66,9 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->plain_password;
         try {
-            $request->request->add(['password' => Hash::make($request['plain_password'])]);
-            // return $request;
+            $request->request->add(['password' => Hash::make($request->plain_password)]);
             $data = $this->getData($request);
             // return $data;
 
