@@ -12,3 +12,4 @@
 
 ### Template
 - [RoyalAdmin](https://github.com/BootstrapDash/RoyalUI-Free-Bootstrap-Admin-Template)
+<p><img src="previews/preview.png" width="300"><img src="previews/preview2.png" width="300"></p>
