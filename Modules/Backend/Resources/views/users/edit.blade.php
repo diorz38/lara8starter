@@ -23,14 +23,18 @@
         </div>
 
         <div class="panel-body">
-
-            @if ($errors->any())
+            @if(Session::has('error'))
+            <div class="alert alert-danger">
+              {{ Session::get('error')}}
+            </div>
+            @endif
+            {{-- @if ($errors->any())
                 <ul class="alert alert-danger">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
-            @endif
+            @endif --}}
 
             <form method="POST" action="{{ route('users.user.update', $user->id) }}" id="edit_user_form" name="edit_user_form" accept-charset="UTF-8" class="form-horizontal">
             {{ csrf_field() }}

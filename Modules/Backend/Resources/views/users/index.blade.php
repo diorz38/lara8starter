@@ -39,10 +39,12 @@
                     <div
                         class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
                         <h4 class="card-title">Users Table</h4>
+                        @permission('create.users')
                         <a href="{{ route('users.user.create') }}" class="btn btn-sm btn-success"
                             title="Create New User">
                             <i class="ti-plus icon-md mb-0 mb-md-3 mb-xl-0"></i>
                         </a>
+                        @endpermission
                     </div>
                     <p class="card-description">
                         Add class <code>.table-striped</code>

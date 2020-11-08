@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Laratables\CustomUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+// use Illuminate\Support\Facades\Validator;
 use Exception;
 use Freshbitsweb\Laratables\Laratables;
 
@@ -53,8 +53,10 @@ class UsersController extends Controller
     public function create()
     {
 
+        $roles = \DB::table('roles')->get(['id','name']);
+        $user_role = [];
 
-        return view('backend::users.create');
+        return view('backend::users.create', compact('roles','user_role'));
     }
 
     /**
@@ -71,8 +73,12 @@ class UsersController extends Controller
             $request->request->add(['password' => Hash::make($request->plain_password)]);
             $data = $this->getData($request);
             // return $data;
+            $user = config('roles.models.defaultUser')::create($data);
 
-            User::create($data);
+            $role = config('roles.models.role')::where('id', '=',$request->role)->first();  //choose the default role upon user creation.
+            // return $role;
+            $user->syncRoles($role);
+            // User::create($data);
 
             return redirect()->route('users.user.index')
                 ->with('success_message', 'User was successfully added.');
@@ -91,7 +97,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::with('roles')->findOrFail($id);
 
         return view('backend::users.show', compact('user'));
     }
@@ -105,10 +111,12 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::with('roles')->findOrFail($id);
+        $user_role = $user->roles[0]->id;
+        $roles = \DB::table('roles')->get(['id','name']);
 
 
-        return view('backend::users.edit', compact('user'));
+        return view('backend::users.edit', compact('user','roles','user_role'));
     }
 
     /**
@@ -121,13 +129,27 @@ class UsersController extends Controller
      */
     public function update($id, Request $request)
     {
+        // return $request;
+        $validatedData = $request->validate([
+            'name' => ['required', 'string', 'max:191'],
+            'email' => 'required|string|max:255|email|unique:users,email,' . $id
+        ]);
+
+        $data = $validatedData;
+        if ($request->has('plain_password')) {
+            $data['password'] = Hash::make($request->plain_password);
+        }
         try {
 
-            $data = $this->getData($request);
+            // $data = $this->getData($request);
 
+            // return $data;
             $user = User::findOrFail($id);
             $user->update($data);
 
+            $role = config('roles.models.role')::where('id', '=',$request->role)->first();  //choose the default role upon user creation.
+            // return $role;
+            $user->syncRoles($role);
             return redirect()->route('users.user.index')
                 ->with('success_message', 'User was successfully updated.');
         } catch (Exception $exception) {
@@ -166,11 +188,11 @@ class UsersController extends Controller
      */
     protected function getData(Request $request)
     {
-        $rules = [
-            'name' => ['required', 'string', 'max:191'],
-            'email' => ['required', 'string', 'email', 'max:191', 'unique:users'],
-            'password' => ['required', 'string', 'min:6'],
-        ];
+            $rules = [
+                'name' => ['required', 'string', 'max:191'],
+                'email' => ['required', 'string', 'email', 'max:191', 'unique:users'],
+                'password' => ['required', 'string'],
+            ];
 
 
         $data = $request->validate($rules);
