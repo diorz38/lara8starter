@@ -37,21 +37,10 @@
             <div class="col-12 grid-margin" id="doc-intro">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="mb-4 mt-4">Introduction</h3>
-                        <p>RoyalUI Admin is a responsive HTML template that is based on the CSS framework Bootstrap
-                            4 and it is built with Sass. Sass compiler makes it easier to code and customize. If you
-                            are unfamiliar with Bootstrap or Sass, visit their
-                            website and read through the documentation. All of Bootstrap components have been
-                            modified to fit the style of RoyalUI Admin and provide a consistent look throughout the
-                            template.</p>
-                        <p>Before you start working with the template, we suggest you go through the pages that are
-                            bundled with the theme. Most of the template example pages contain quick tips on how to
-                            create or use a component which can
-                            be really helpful when you need to create something on the fly.</p>
-                        <p class="d-inline"><strong>Note</strong>: We are trying our best to document how to use the
-                            template. If you think that something is missing from the documentation, please do not
-                            hesitate to tell us about it. If you have any questions or issues regarding this theme
-                            please email us at <a class="d-inline text-info" href="mailto:info@bootstrapdash.com">info@bootstrapdash.com</a></p>
+                        <h3 class="mb-4 mt-4">Intro</h3>
+                        <p>RoyalUI Admin adalah template HTML responsif yang didasarkan pada kerangka CSS Bootstrap 4 dan dibangun dengan Sass. Kompiler Sass membuatnya lebih mudah untuk dikodekan dan disesuaikan. Jika Anda tidak terbiasa dengan Bootstrap atau Sass, kunjungi situs web mereka dan baca dokumentasi. Semua komponen Bootstrap telah dimodifikasi agar sesuai dengan gaya RoyalUI Admin dan memberikan tampilan yang konsisten di seluruh template.</p>
+                        <p>Sebelum Anda mulai bekerja dengan template, kami sarankan Anda membuka halaman-halaman yang dibundel dengan tema. Sebagian besar halaman contoh template berisi tip cepat tentang cara membuat atau menggunakan komponen yang dapat sangat membantu saat Anda perlu membuat sesuatu dengan cepat.</p>
+                        <p class="d-inline"><strong>Catatan</strong>: Kami mencoba sebaik mungkin untuk mendokumentasikan cara menggunakan template. Jika Anda merasa ada yang kurang dari dokumentasi, jangan ragu untuk memberi tahu kami. Jika Anda memiliki pertanyaan atau masalah tentang tema ini, silakan kirim email kepada kami di <a class="d-inline text-info" href="mailto:info@bootstrapdash.com">info@bootstrapdash.com</a></p>
                     </div>
                 </div>
             </div>
@@ -59,11 +48,9 @@
                 <div class="card">
                     <div class="card-body">
                         <h3 class="mb-4">Getting started</h3>
-                        <p>You can directly use the compiled and ready-to-use the version of the template. But in
-                            case you plan to customize the template extensively the template allows you to do so.
-                        </p>
-                        <p>Within the download you'll find the following directories and files, logically grouping
-                            common assets and providing both compiled and minified variations:</p>
+                        <p>Anda dapat langsung menggunakan versi template yang telah dikompilasi dan siap digunakan. Tetapi jika Anda berencana untuk menyesuaikan template secara ekstensif, template memungkinkan Anda untuk melakukannya.
+
+                            Dalam file <b>RoyalUI-Free-Bootstrap-Admin-Template-master.zip</b> Anda akan menemukan direktori dan file berikut, yang secara logis mengelompokkan aset umum dan menyediakan variasi yang dikompilasi dan dikecilkan:</p>
                         <pre>
 RoyalUI/
 ├── template/
@@ -81,57 +68,55 @@ RoyalUI/
 ├── documentation/
 ├── CHANGELOG.md
                         </pre>
-                        <p class="mt-1">Note: The root folder denoted further in this documentation refers to the
-                            'template' folder inside the downloaded folder</p>
+                        <p class="mt-1">Catatan: Ekstrak file zip tersebut dan lakukan modifikasi sesuai kebutuhan anda. Setelah selesai modifikasi copy-paste isi direktori 'template' ke dalam direktori <i>public/theme</i></p>
                         <div class="alert alert-success mt-4 d-flex align-items-center" role="alert">
                             <i class="ti-info-alt mr-4"></i>
-                            <p>We have bundled up the vendor files needed for demo purpose into a folder 'vendors',
-                                you may not need all those vendors or may need to add more vendors in your
-                                application. If you want to make any change in the vendor package files, you can
-                                either change the src path for related tasks in the file gulpfile.js and run the
-                                task <code> bundleVendors </code> to rebuild the vendor files or manually edit the
-                                vendor folder.</p>
+                            <p>Kami telah menggabungkan file vendor yang diperlukan untuk tujuan demo ke dalam folder 'vendor',
+                                Anda mungkin tidak membutuhkan semua vendor tersebut atau mungkin perlu menambahkan lebih banyak vendor di
+                                aplikasi. Jika Anda ingin membuat perubahan pada file paket vendor, Anda bisa
+                                baik mengubah jalur src untuk tugas terkait di file gulpfile.js dan menjalankan
+                                tugas <code> bundleVendors </code> untuk membangun kembali file vendor atau mengedit file
+                                folder vendor.</p>
                         </div>
                         <hr class="mt-5">
-                        <h4 class="mt-4">Installation</h4>
-                        <p class="mb-0">
-                            You need to install package files/Dependencies for this project if you want to customize
-                            it. To do this, you must have <span class="font-weight-bold">node and npm</span>
-                            installed in your computer.
+                        <h4 class="mt-4">Instalasi</h4>
+                        <p class = "mb-0">
+                            Anda perlu menginstal file paket / Dependensi untuk proyek ini jika Anda ingin menyesuaikan
+                            Itu. Untuk melakukannya, Anda harus memiliki <span class = "font-weight-bold"> node dan npm </span>
+                            terpasang di komputer Anda.
                         </p>
-                        <p class="mb-0">Installation guide of the node can be found <a
-                                href="https://nodejs.org/en/">here</a>. As npm comes bundled with a node, a separate
-                            installation of npm is not needed.</p>
+                        <p class = "mb-0"> Panduan penginstalan node dapat ditemukan <a
+                                href = "https://nodejs.org/en/"> di sini </a>. Karena npm dibundel dengan node, file
+                            instalasi npm tidak diperlukan. </p>
                         <p>
-                            If you have installed them, just go to the root folder and run the following command in
-                            your command prompt or terminal (for the mac users).
+                            Jika Anda telah menginstalnya, buka saja folder root dan jalankan perintah berikut di
+                            prompt perintah atau terminal Anda (untuk pengguna mac).
                         </p>
-                        <pre class="shell-mode">npm install</pre>
-                        <p class="mt-4">
-                            This will install the dev dependencies in the local <span
-                                class="font-weight-bold">node_modules</span> folder in your root directory.
+                        <pre class = "shell-mode"> npm install </pre>
+                        <p class = "mt-4">
+                            Ini akan menginstal dependensi dev di <span
+                                class = "font-weight-bold"> node_modules </span> di direktori root Anda.
                         </p>
-                        <p class="mt-2">
-                            Then you will need to install <span class="font-weight-bold">Gulp</span>. We use the
-                            Gulp task manager for the development processes. Gulp will watch for changes to the SCSS
-                            files and automatically compile the files to CSS.
+                        <p class = "mt-2">
+                            Kemudian Anda perlu memasang <span class = "font-weight-bold"> Gulp </span>. Kami menggunakan
+                            Gulp task manager untuk proses pengembangan. Gulp akan mengawasi perubahan pada SCSS
+                            file dan secara otomatis mengkompilasi file ke CSS.
                         </p>
-                        <p>Getting started with Gulp is pretty simple. The <a href="https://gulpjs.com/"
-                                target="_blank">Gulp</a> site is a great place to get information on installing Gulp
-                            if you need more information. You need to first install Gulp-cli in your machine using
-                            the below command.</p>
-                        <pre class="shell-mode">npm install -g gulp-cli</pre>
-                        <p class="mt-4">This installs Gulp-cli globally to your machine. The other thing that Gulp
-                            requires, which, is really what does all the work, is the gulpfile.js. In this file, you
-                            set up all of your tasks that you will run.</p>
-                        <p>Don't worry. We have this file already created for you!</p>
-                        <p>To run this project in development mode enter the following command below. This will
-                            start the file watch by gulp and whenever a file is modified, the SCSS files will be
-                            compiled to create the CSS file.</p>
-                        <pre class="shell-mode">gulp serve</pre>
+                        <p> Memulai Gulp cukup sederhana. <a href = "https://gulpjs.com/"
+                                situs target = "_ blank"> Gulp </a> adalah tempat yang tepat untuk mendapatkan informasi tentang cara memasang Gulp
+                            jika Anda membutuhkan informasi lebih lanjut. Anda harus menginstal Gulp-cli di mesin Anda menggunakan
+                            perintah di bawah ini. </p>
+                        <pre class = "shell-mode"> npm install -g gulp-cli </pre>
+                        <p class = "mt-4"> Ini menginstal Gulp-cli secara global ke mesin Anda. Hal lain agar Gulp
+                            bisa dijalankan adalah file gulpfile.js. Dalam file ini, Anda dapat
+                            mengatur semua tugas gulp yang akan Anda jalankan. </p>
+                        <p> Jangan khawatir. Kami memiliki file ini telah dibuat untuk Anda! </p>
+                        <p> Untuk menjalankan proyek ini dalam mode pengembangan, masukkan perintah berikut di bawah ini.
+                            Mode ini memungkinkan sinksonisasi tampilan secara otomatis setiap kali anda menyimpan perubahan file SCSS, file SCSS akan
+                            dikompilasi untuk membuat file CSS. </p>
+                        <pre class = "shell-mode"> gulp serve </pre>
                         <div class="alert alert-warning mt-4" role="alert">
-                            <i class="ti-info-alt-outline"></i>It is important to run <code>gulp serve</code>
-                            command from the directory where the gulpfile.js is located.
+                            <i class="ti-info-alt-outline"></i>Penting untuk menjalankan perintah <code> gulp serve </code> dari direktori tempat gulpfile.js berada.
                         </div>
                     </div>
                 </div>

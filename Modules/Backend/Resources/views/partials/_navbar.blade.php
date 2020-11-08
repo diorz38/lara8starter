@@ -126,6 +126,13 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                     aria-labelledby="profileDropdown">
+                    <div class="item-content flex-grow dropdown-header mb-0">
+                        <h6 class="ellipsis font-weight-normal">{{\Auth::user()->name}}
+                        </h6>
+                        <small class="font-weight-light small-text text-muted mb-0 mt-0">
+                            {{\Auth::user()->email}}
+                        </small>
+                    </div>
                     <a class="dropdown-item" href="{{ route('backend.dashboard') }}">
                         <i class="ti-panel text-primary"></i>
                         Backend
