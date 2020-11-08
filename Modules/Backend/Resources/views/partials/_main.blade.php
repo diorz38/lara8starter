@@ -127,10 +127,17 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                     aria-labelledby="profileDropdown">
-                    <a class="dropdown-item">
-                        <i class="ti-settings text-primary"></i>
-                        Settings
+                    <a class="dropdown-item" href="{{ route('backend.dashboard') }}">
+                        <i class="ti-panel text-primary"></i>
+                        Backend
                     </a>
+                    @role('admin')
+                    {{-- @if(Auth::check() && Auth::user()->hasRole('admin')) --}}
+                        <a class="dropdown-item" href="{{ route('laravelroles::permissions.index') }}">
+                            <i class="ti-settings text-primary"></i>
+                            Settings
+                        </a>
+                    @endrole
                     <a class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">

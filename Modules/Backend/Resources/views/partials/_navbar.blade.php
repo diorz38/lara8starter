@@ -21,6 +21,9 @@
             </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('home') }}">Beranda</a>
+            </li>
             <li class="nav-item dropdown mr-1">
                 <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center"
                     id="messageDropdown" href="#" data-toggle="dropdown">
@@ -123,6 +126,10 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                     aria-labelledby="profileDropdown">
+                    <a class="dropdown-item" href="{{ route('backend.dashboard') }}">
+                        <i class="ti-panel text-primary"></i>
+                        Backend
+                    </a>
                     @role('admin')
                     {{-- @if(Auth::check() && Auth::user()->hasRole('admin')) --}}
                         <a class="dropdown-item" href="{{ route('laravelroles::permissions.index') }}">
