@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "95af1569a133be3a25919fcc210db675",
+    "content-hash": "f80050174e378435dcee2cae9b55b6a9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1003,16 +1003,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.12.3",
+            "version": "v8.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "6707480c5f0db7aa07537f9ad93255b64b65b85e"
+                "reference": "b60139c9d3b475d5b5dc261c5dcafe8ca49b4a13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/6707480c5f0db7aa07537f9ad93255b64b65b85e",
-                "reference": "6707480c5f0db7aa07537f9ad93255b64b65b85e",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/b60139c9d3b475d5b5dc261c5dcafe8ca49b4a13",
+                "reference": "b60139c9d3b475d5b5dc261c5dcafe8ca49b4a13",
                 "shasum": ""
             },
             "require": {
@@ -1162,7 +1162,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-10-29T22:01:29+00:00"
+            "time": "2020-11-10T14:47:10+00:00"
         },
         {
             "name": "laravel/helpers",
@@ -1280,60 +1280,6 @@
                 "psysh"
             ],
             "time": "2020-10-29T13:07:12+00:00"
-        },
-        {
-            "name": "laravel/ui",
-            "version": "v3.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/ui.git",
-                "reference": "444072cb2f8baaa15172c5cde2bd30d188c3b7e7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/444072cb2f8baaa15172c5cde2bd30d188c3b7e7",
-                "reference": "444072cb2f8baaa15172c5cde2bd30d188c3b7e7",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/console": "^8.0",
-                "illuminate/filesystem": "^8.0",
-                "illuminate/support": "^8.0",
-                "php": "^7.3|^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Laravel\\Ui\\UiServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laravel\\Ui\\": "src/",
-                    "Illuminate\\Foundation\\Auth\\": "auth-backend/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "Laravel UI utilities and presets.",
-            "keywords": [
-                "laravel",
-                "ui"
-            ],
-            "time": "2020-11-03T19:51:21+00:00"
         },
         {
             "name": "league/commonmark",
@@ -1806,16 +1752,16 @@
         },
         {
             "name": "nwidart/laravel-modules",
-            "version": "8.0.0",
+            "version": "8.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nWidart/laravel-modules.git",
-                "reference": "7983e41c3832a13e521aa915532efdc7b67563af"
+                "reference": "6ade5ec19e81a0e4807834886a2c47509d069cb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nWidart/laravel-modules/zipball/7983e41c3832a13e521aa915532efdc7b67563af",
-                "reference": "7983e41c3832a13e521aa915532efdc7b67563af",
+                "url": "https://api.github.com/repos/nWidart/laravel-modules/zipball/6ade5ec19e81a0e4807834886a2c47509d069cb7",
+                "reference": "6ade5ec19e81a0e4807834886a2c47509d069cb7",
                 "shasum": ""
             },
             "require": {
@@ -1826,7 +1772,7 @@
                 "friendsofphp/php-cs-fixer": "^2.16",
                 "laravel/framework": "^8.0",
                 "mockery/mockery": "~1.0",
-                "orchestra/testbench": "^6.0",
+                "orchestra/testbench": "^6.2",
                 "phpstan/phpstan": "^0.12.14",
                 "phpunit/phpunit": "^8.5",
                 "spatie/phpunit-snapshot-assertions": "^2.1.0"
@@ -1879,7 +1825,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-03T14:56:31+00:00"
+            "time": "2020-11-11T09:24:22+00:00"
         },
         {
             "name": "opis/closure",
@@ -4827,23 +4773,23 @@
         },
         {
             "name": "voku/portable-ascii",
-            "version": "1.5.3",
+            "version": "1.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-ascii.git",
-                "reference": "25bcbf01678930251fd572891447d9e318a6e2b8"
+                "reference": "80953678b19901e5165c56752d087fc11526017c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/25bcbf01678930251fd572891447d9e318a6e2b8",
-                "reference": "25bcbf01678930251fd572891447d9e318a6e2b8",
+                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/80953678b19901e5165c56752d087fc11526017c",
+                "reference": "80953678b19901e5165c56752d087fc11526017c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~6.0 || ~7.0"
+                "phpunit/phpunit": "~6.0 || ~7.0 || ~9.0"
             },
             "suggest": {
                 "ext-intl": "Use Intl for transliterator_transliterate() support"
@@ -4893,7 +4839,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-22T23:32:04+00:00"
+            "time": "2020-11-12T00:07:28+00:00"
         }
     ],
     "packages-dev": [
@@ -4971,36 +4917,31 @@
         },
         {
             "name": "doctrine/instantiator",
-            "version": "1.3.1",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "f350df0268e904597e3bd9c4685c53e0e333feea"
+                "reference": "d56bf6102915de5702778fe20f2de3b2fe570b5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/f350df0268e904597e3bd9c4685c53e0e333feea",
-                "reference": "f350df0268e904597e3bd9c4685c53e0e333feea",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/d56bf6102915de5702778fe20f2de3b2fe570b5b",
+                "reference": "d56bf6102915de5702778fe20f2de3b2fe570b5b",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^6.0",
+                "doctrine/coding-standard": "^8.0",
                 "ext-pdo": "*",
                 "ext-phar": "*",
-                "phpbench/phpbench": "^0.13",
-                "phpstan/phpstan-phpunit": "^0.11",
-                "phpstan/phpstan-shim": "^0.11",
-                "phpunit/phpunit": "^7.0"
+                "phpbench/phpbench": "^0.13 || 1.0.0-alpha2",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.2.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Instantiator\\": "src/Doctrine/Instantiator/"
@@ -5014,7 +4955,7 @@
                 {
                     "name": "Marco Pivetta",
                     "email": "ocramius@gmail.com",
-                    "homepage": "http://ocramius.github.com/"
+                    "homepage": "https://ocramius.github.io/"
                 }
             ],
             "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
@@ -5037,7 +4978,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-29T17:27:14+00:00"
+            "time": "2020-11-10T18:47:58+00:00"
         },
         {
             "name": "facade/flare-client-php",
@@ -5374,6 +5315,58 @@
                 "test"
             ],
             "time": "2020-07-09T08:09:16+00:00"
+        },
+        {
+            "name": "laravel/breeze",
+            "version": "v0.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/breeze.git",
+                "reference": "d5b5435cb0cf89ecee724caeec0fe8893ff1f516"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/breeze/zipball/d5b5435cb0cf89ecee724caeec0fe8893ff1f516",
+                "reference": "d5b5435cb0cf89ecee724caeec0fe8893ff1f516",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/filesystem": "^8.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Breeze\\BreezeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Breeze\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Minimal Laravel authentication scaffolding with Blade and Tailwind.",
+            "keywords": [
+                "auth",
+                "laravel"
+            ],
+            "time": "2020-11-11T13:39:58+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -6193,16 +6186,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.4.2",
+            "version": "9.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3866b2eeeed21b1b099c4bc0b7a1690ac6fd5baa"
+                "reference": "9fa359ff5ddaa5eb2be2bedb08a6a5787a5807ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3866b2eeeed21b1b099c4bc0b7a1690ac6fd5baa",
-                "reference": "3866b2eeeed21b1b099c4bc0b7a1690ac6fd5baa",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9fa359ff5ddaa5eb2be2bedb08a6a5787a5807ab",
+                "reference": "9fa359ff5ddaa5eb2be2bedb08a6a5787a5807ab",
                 "shasum": ""
             },
             "require": {
@@ -6288,7 +6281,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-19T09:23:29+00:00"
+            "time": "2020-11-10T12:53:30+00:00"
         },
         {
             "name": "sebastian/cli-parser",

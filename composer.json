@@ -16,11 +16,11 @@
         "jeremykenedy/laravel-roles": "^4.0",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.1",
         "nwidart/laravel-modules": "^8.0"
     },
     "require-dev": {
         "crestapps/laravel-code-generator": "^2.4",
+        "laravel/breeze": "^0.0.5",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.4.2",
