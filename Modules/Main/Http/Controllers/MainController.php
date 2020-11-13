@@ -9,13 +9,22 @@ use Illuminate\Routing\Controller;
 class MainController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
         // return view('main::index');
-        return view('main::main');
+        return view('main::dashboard');
     }
 
     /**
