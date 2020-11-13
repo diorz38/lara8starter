@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+// use App\Http\Controllers\UsersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +22,22 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+// Route::group([
+//     'prefix' => 'users',
+// ], function () {
+//     Route::get('/', [UsersController::class, 'index'])
+//         ->name('users.user.index');
+//     Route::get('/create', [UsersController::class, 'create'])
+//         ->name('users.user.create');
+//     Route::get('/show/{user}', [UsersController::class, 'show'])
+//         ->name('users.user.show');
+//     Route::get('/{user}/edit', [UsersController::class, 'edit'])
+//         ->name('users.user.edit');
+//     Route::post('/', [UsersController::class, 'store'])
+//         ->name('users.user.store');
+//     Route::put('user/{user}', [UsersController::class, 'update'])
+//         ->name('users.user.update');
+//     Route::delete('/user/{user}', [UsersController::class, 'destroy'])
+//         ->name('users.user.destroy');
+// });
