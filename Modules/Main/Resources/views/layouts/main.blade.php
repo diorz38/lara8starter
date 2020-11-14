@@ -37,6 +37,7 @@
             display: none;
         }
     </style>
+    @livewireStyles
 </head>
 
 <body class="antialiased">
@@ -49,7 +50,8 @@
             @include('main::partials._footer')
         </div>
     </div>
-    @include('main::pages.dashboard.modal')
+
+    @livewireScripts
     <!-- Libs JS -->
     <script src="{{asset('tabler/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('tabler/dist/libs/jquery/dist/jquery.slim.min.js')}}"></script>

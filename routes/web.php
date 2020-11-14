@@ -22,6 +22,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/livewire/pemilih',function () {
+    return view('livewire.home');
+})->middleware(['auth'])->name('livewire_pemilih');
+
 require __DIR__.'/auth.php';
 
 // Route::group([

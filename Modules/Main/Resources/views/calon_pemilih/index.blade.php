@@ -1,5 +1,17 @@
 @extends('main::layouts.main')
 
+@push('page-js')
+<script>
+$checkboxes = $('#Form2 input:checkbox');
+$checkboxes.on('click', checkboxes);
+
+function checkboxes() {
+    var allChecked = $checkboxes.not(':checked').length == 0;
+    console.log(allChecked);
+}
+</script>
+@endpush
+
 @section('content')
 <div class="container-xl">
 
@@ -30,7 +42,6 @@
         </div> --}}
     @endif
 
-
     <!-- Page title -->
     <div class="page-header text-white d-print-none">
         <div class="row align-items-center">
@@ -52,34 +63,29 @@
                         </a>
                     </span>
                     <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-toggle="modal"
-                        data-target="#modal-report">
+                        data-target="#modal-pemilih_tambahan">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                             stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                        Create new report
-                    </a>
-                    <a href="#" class="btn btn-primary d-sm-none btn-icon" data-toggle="modal"
-                        data-target="#modal-report" aria-label="Create new report">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <line x1="12" y1="5" x2="12" y2="19" />
-                            <line x1="5" y1="12" x2="19" y2="12" /></svg>
+                        TAMBAHAN
                     </a>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="row row-deck row-cards">
         <div class="col-12">
+
             <div class="card">
-                {{-- <div class="card-header">
-                    <h3 class="card-title">Invoices</h3>
-                </div> --}}
+                <div class="modal modal-blur fade" id="modal-pemilih_tambahan" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        @include('main::calon_pemilih.modal_create_form')
+                    </div>
+                </div>
                 <div class="card-body border-bottom py-3">
                     <div class="d-flex">
                         <div class="text-muted">
@@ -102,101 +108,109 @@
                         <h4>No Calon Pemilihs Available.</h4>
                     </div>
                 @else
-                    <div class="table-responsive">
-                        <table class="table card-table table-vcenter text-nowrap datatable">
-                            <thead>
-                                <tr>
-                                    <th class="w-1">No.</th>
-                                    <th>Nama</th>
-                                    <th>Tempat Lahir</th>
-                                    <th>Tgl Lahir</th>
-                                    <th>Nik</th>
-                                    <th>Dusun</th>
-                                    <th>Rt</th>
-                                    <th>Rw</th>
-                                    <th>Asal Calon</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($calonPemilihs as $calonPemilih)
-                                <tr>
-                                    <td><span class="text-muted">{{ $calonPemilih->no_dps }}</span></td>
-                                    <td><a href="#" class="text-reset" data-toggle="modal" data-target="#modal-pemilih{{$calonPemilih->id}}" tabindex="-1">{{ $calonPemilih->nama }}</a>
-                                    </td>
-                                    <td>{{ $calonPemilih->tempat_lahir }}</td>
-                                    <td>{{ $calonPemilih->tgl_lahir }}</td>
-                                    <td><a href="#" class="text-reset" data-toggle="modal" data-target="#modal-pemilih{{$calonPemilih->id}}" tabindex="-1">{{ $calonPemilih->nik }}</a></td>
-                                    <td>{{ $calonPemilih->dusun }}</td>
-                                    <td>{{ $calonPemilih->rt }}</td>
-                                    <td>{{ $calonPemilih->rw }}</td>
-                                    {{-- <td>{{ $calonPemilih->desa }}</td> --}}
-                                    <td>
-                                        @if($calonPemilih->status == 1)
-                                        <span class="badge bg-indigo">DPS</span>
-                                        @elseif($calonPemilih->status == 7)
-                                        <span class="badge bg-lime">Tambahan</span>
-                                        @else
-                                        <span class="badge bg-warning">DPS (TM)</span>
-                                        @endif
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="btn-group" role="group" aria-label="Aksi">
-                                            <a href="#" data-toggle="modal" data-target="#modal-pemilih{{$calonPemilih->id}}" tabindex="-1" type="button" class="btn btn-icon btn-primary">
+
+                {{-- <div class="panel-body text-center">
+                    <form action="/cgi-bin/Lib.exe" method=POST name="checks">
+                        <input type=checkbox name="us1" value="Joe" ID="Checkbox1"><label>Joe</>
+                        <input type=checkbox name="us2" value="Dan" ID="Checkbox2"><label>Dan</>
+                        <input type=checkbox name="us3" value="Sal" ID="Checkbox3"><label>Sal</>
+                    </form>
+                </div> --}}
+
+                <div class="table-responsive">
+                    <table class="table card-table table-vcenter text-nowrap datatable">
+                        <thead>
+                            <tr>
+                                <th class="w-1">No.</th>
+                                <th>Nama</th>
+                                <th>Tempat Lahir</th>
+                                <th>Tgl Lahir</th>
+                                <th>Nik</th>
+                                <th>Dusun</th>
+                                <th>Rt</th>
+                                <th>Rw</th>
+                                <th>Asal Calon</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($calonPemilihs as $calonPemilih)
+                            <tr>
+                                <td><span class="text-muted">{{ $calonPemilih->no_dps }}</span></td>
+                                <td><a href="#" class="text-reset" data-toggle="modal" data-target="#modal-pemilih{{$calonPemilih->id}}" tabindex="-1">{{ $calonPemilih->nama }}</a>
+                                </td>
+                                <td>{{ $calonPemilih->tempat_lahir }}</td>
+                                <td>{{ $calonPemilih->tgl_lahir }}</td>
+                                <td><a href="#" class="text-reset" data-toggle="modal" data-target="#modal-pemilih{{$calonPemilih->id}}" tabindex="-1">{{ $calonPemilih->nik }}</a></td>
+                                <td>{{ $calonPemilih->dusun }}</td>
+                                <td>{{ $calonPemilih->rt }}</td>
+                                <td>{{ $calonPemilih->rw }}</td>
+                                {{-- <td>{{ $calonPemilih->desa }}</td> --}}
+                                <td>
+                                    @if($calonPemilih->status == 1)
+                                    <span class="badge bg-indigo">DPS</span>
+                                    @elseif($calonPemilih->status == 7)
+                                    <span class="badge bg-lime">Tambahan</span>
+                                    @else
+                                    <span class="badge bg-warning">DPS (TM)</span>
+                                    @endif
+                                </td>
+                                <td class="text-right">
+                                    <div class="btn-group" role="group" aria-label="Aksi">
+                                        <a href="#" data-toggle="modal" data-target="#modal-pemilih{{$calonPemilih->id}}" tabindex="-1" type="button" class="btn btn-icon btn-primary">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3"></path><path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3"></path>
+                                                <line x1="16" y1="5" x2="19" y2="8"></line>
+                                            </svg>
+                                        </a>
+                                        <form method="POST" action="{!! route('calon_pemilihs.calon_pemilih.destroy', $calonPemilih->id) !!}" accept-charset="UTF-8">
+                                            <input name="_method" value="DELETE" type="hidden">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-icon btn-danger" onclick="return confirm(&quot;Click Ok to delete Calon Pemilih.&quot;)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3"></path><path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3"></path>
-                                                    <line x1="16" y1="5" x2="19" y2="8"></line>
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M10 10l4 4m0 -4l-4 4"></path>
                                                 </svg>
-                                            </a>
-                                            <form method="POST" action="{!! route('calon_pemilihs.calon_pemilih.destroy', $calonPemilih->id) !!}" accept-charset="UTF-8">
-                                                <input name="_method" value="DELETE" type="hidden">
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                                <div class="modal modal-blur fade" id="modal-pemilih{{$calonPemilih->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">{{$calonPemilih->no_dps ? 'No.DPS: '.$calonPemilih->no_dps : 'Tambahan'}}</h5>
+                                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <form method="POST" action="{{ route('calon_pemilihs.calon_pemilih.update', $calonPemilih->id) }}" id="edit_calon_pemilih_form" name="edit_calon_pemilih_form" accept-charset="UTF-8">
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-icon btn-danger" onclick="return confirm(&quot;Click Ok to delete Calon Pemilih.&quot;)">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M10 10l4 4m0 -4l-4 4"></path>
-                                                    </svg>
-                                                </button>
+                                                <input name="_method" type="hidden" value="PUT">
+
+                                                @include ('main::calon_pemilih.form', [
+                                                    'calonPemilih' => $calonPemilih,
+                                                    ])
+
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-link link-secondary" data-dismiss="modal">
+                                                        Batal
+                                                    </button>
+                                                    <button type="submit" class="btn btn-primary ml-auto">
+                                                        Simpan
+                                                    </button>
+                                                </div>
                                             </form>
                                         </div>
-                                    </td>
-                                    <div class="modal modal-blur fade" id="modal-pemilih{{$calonPemilih->id}}" tabindex="-1" role="dialog" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">{{$calonPemilih->no_dps ? 'No.DPS: '.$calonPemilih->no_dps : 'Tambahan'}}</h5>
-                                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <form method="POST" action="{{ route('calon_pemilihs.calon_pemilih.update', $calonPemilih->id) }}" id="edit_calon_pemilih_form" name="edit_calon_pemilih_form" accept-charset="UTF-8">
-                                                    {{ csrf_field() }}
-                                                    <input name="_method" type="hidden" value="PUT">
-
-                                                    <div class="modal-body">
-                                                            @include ('main::calon_pemilih.form', [
-                                                                        'calonPemilih' => $calonPemilih,
-                                                                        ])
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button class="btn btn-link link-secondary" data-dismiss="modal">
-                                                            Batal
-                                                        </button>
-                                                        <button type="submit" class="btn btn-primary ml-auto">
-                                                            Simpan
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
                                     </div>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                </div>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
 
-                    <div class="card-footer d-flex align-items-center">
-                        {!! $calonPemilihs->render() !!}
-                    </div>
+                <div class="card-footer d-flex align-items-center">
+                    {!! $calonPemilihs->render() !!}
+                </div>
                 @endif
             </div>
         </div>

@@ -14,7 +14,7 @@ use Modules\Main\Http\Controllers\CalonPemilihsController;
 
 Route::prefix('main')->group(function() {
     Route::get('/', 'MainController@index')->name('home');
-
+    Route::get('/livewire/pemilih', 'CalonPemilihsController@livewire')->name('main_livewire_pemilih');
 
     Route::group([
         'prefix' => 'calon_pemilih',
@@ -34,4 +34,5 @@ Route::prefix('main')->group(function() {
         Route::delete('/calon_pemilih/{calonPemilih}',[CalonPemilihsController::class,'destroy'])
             ->name('calon_pemilihs.calon_pemilih.destroy')->where('id', '[0-9]+');
     });
+
 });

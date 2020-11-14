@@ -2168,5 +2168,5 @@
         </div>
     </div>
 </div>
-
+@include('main::pages.dashboard.modal')
 @endsection

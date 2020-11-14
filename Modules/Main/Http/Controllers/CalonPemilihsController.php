@@ -12,7 +12,15 @@ use Exception;
 
 class CalonPemilihsController extends Controller
 {
-
+/**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the calon pemilihs.
      *
@@ -20,9 +28,17 @@ class CalonPemilihsController extends Controller
      */
     public function index()
     {
+        $nama_desa = config('global.desa.nama');
+        // return $settings = app('settings');
         $calonPemilihs = CalonPemilih::whereNotIn('status',['1','7'])->with('user')->simplepaginate(25);
+
         // return $calonPemilihs;
-        return view('main::calon_pemilih.index', compact('calonPemilihs'));
+        return view('main::calon_pemilih.index', compact('calonPemilihs','nama_desa'));
+    }
+
+    public function livewire()
+    {
+        return view('main::livewire.home');
     }
 
     /**
