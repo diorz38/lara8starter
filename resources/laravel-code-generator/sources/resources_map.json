@@ -1,1 +1,7 @@
-[]
+[
+    {
+        "model-name": "CalonPemilih",
+        "resource-file": "calon_pemilihs.json",
+        "table-name": "daftar_penduduk"
+    }
+]

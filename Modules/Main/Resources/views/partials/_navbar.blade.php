@@ -1,4 +1,4 @@
-<header class="navbar navbar-expand-md navbar-dark navbar-overlap d-print-none">
+<header class="navbar navbar-expand-md navbar-dark navbar-overlap d-print-none" style="background: #4d2b7f">
     <div class="container-xl">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu">
             <span class="navbar-toggler-icon"></span>
@@ -30,11 +30,16 @@
             </div>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-toggle="dropdown">
+                    @php
+                        $split = explode(" ", \Auth::user()->name);
+                        $firstname = array_shift($split);
+                        $lastname  = implode(" ", $split);
+                    @endphp
                     <span class="avatar avatar-sm"
-                        style="background-image: url(https://ui-avatars.com/api/?rounded=true&name=Pawel+Kuna)"></span>
+                        style="background-image: url(https://ui-avatars.com/api/?rounded=true&name={{$firstname}}+{{$lastname}})"></span>
                     <div class="d-none d-xl-block pl-2">
-                        <div>Paweł Kuna</div>
-                        <div class="mt-1 small text-muted">UI Designer</div>
+                        <div>{{\Auth::user()->name}}</div>
+                        <div class="mt-1 small text-muted">{{\Auth::user()->email}}</div>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
@@ -43,7 +48,14 @@
                     <a href="#" class="dropdown-item">Feedback</a>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item">Settings</a>
-                    <a href="#" class="dropdown-item">Logout</a>
+                    <a href="{{ route('logout') }}" class="dropdown-item"
+                        onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>

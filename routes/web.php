@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\UsersController;
+use App\Http\Controllers\CalonPemilihsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,4 +41,23 @@ require __DIR__.'/auth.php';
 //         ->name('users.user.update');
 //     Route::delete('/user/{user}', [UsersController::class, 'destroy'])
 //         ->name('users.user.destroy');
+// });
+
+// Route::group([
+//     'prefix' => 'calon_pemilihs',
+// ], function () {
+//     Route::get('/', [CalonPemilihsController::class,'index'])
+//         ->name('calon_pemilihs.calon_pemilih.index');
+//     Route::get('/create',[CalonPemilihsController::class,'create'])
+//         ->name('calon_pemilihs.calon_pemilih.create');
+//     Route::get('/show/{calonPemilih}',[CalonPemilihsController::class,'show'])
+//         ->name('calon_pemilihs.calon_pemilih.show')->where('id', '[0-9]+');
+//     Route::get('/{calonPemilih}/edit',[CalonPemilihsController::class,'edit'])
+//         ->name('calon_pemilihs.calon_pemilih.edit')->where('id', '[0-9]+');
+//     Route::post('/', [CalonPemilihsController::class,'store'])
+//         ->name('calon_pemilihs.calon_pemilih.store');
+//     Route::put('calon_pemilih/{calonPemilih}', [CalonPemilihsController::class,'update'])
+//         ->name('calon_pemilihs.calon_pemilih.update')->where('id', '[0-9]+');
+//     Route::delete('/calon_pemilih/{calonPemilih}',[CalonPemilihsController::class,'destroy'])
+//         ->name('calon_pemilihs.calon_pemilih.destroy')->where('id', '[0-9]+');
 // });
