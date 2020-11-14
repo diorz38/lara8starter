@@ -9,6 +9,7 @@
 - [crestapps/laravel-code-generator](https://github.com/CrestApps/laravel-code-generator/tree/v2.4.4)
 - [nwidart/laravel-modules](https://github.com/nWidart/laravel-modules/tree/8.0.0)
 - [freshbitsweb/laratables](https://github.com/freshbitsweb/laratables/tree/v2.4.0)
+- [livewire/livewire](https://github.com/livewire/livewire)
 
 ### Template
 - [RoyalAdmin](https://github.com/BootstrapDash/RoyalUI-Free-Bootstrap-Admin-Template)
