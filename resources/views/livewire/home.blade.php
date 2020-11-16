@@ -27,7 +27,7 @@
                                 {{ session('message') }}
                             </div>
                         @endif
-                        @livewire('pemilih')
+                        @livewire('users')
                     </div>
                 </div>
             </div>

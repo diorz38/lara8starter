@@ -55,6 +55,8 @@
     <!-- Libs JS -->
     <script src="{{asset('tabler/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('tabler/dist/libs/jquery/dist/jquery.slim.min.js')}}"></script>
+    <!-- Tabler Core -->
+    <script src="{{asset('tabler/dist/js/tabler.min.js')}}"></script>
 
     <!-- Pages JS -->
     @stack('page-js')
@@ -63,8 +65,6 @@
         document.body.style.display = "block"
     </script>
 
-    <!-- Tabler Core -->
-    <script src="{{asset('tabler/dist/js/tabler.min.js')}}"></script>
 
 </body>
 

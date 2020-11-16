@@ -1,9 +1,9 @@
 <!-- Modal -->
-<div wire:ignore.self class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div wire:ignore.self class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg text-dark" role="document">
        <div class="modal-content">
         <div class="modal-header">
-            {{-- <h5 class="modal-title">{{$calonPemilih->no_dps ? 'No.DPS: '.$calonPemilih->no_dps : 'Tambahan'}}</h5> --}}
+        <h5 class="modal-title">No.DPS: {{$no_dps}} {{$pemilih_id}}</h5>
             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
         </div>
         {{-- <form method="POST" action="{{ route('calon_pemilihs.calon_pemilih.update', $calonPemilih->id) }}" id="edit_calon_pemilih_form" name="edit_calon_pemilih_form" accept-charset="UTF-8">

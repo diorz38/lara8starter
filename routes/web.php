@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CalonPemilihsController;
+use App\Http\Livewire\Posts;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,16 +16,15 @@ use App\Http\Controllers\CalonPemilihsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $nama_desa = config('global.desa.nama');
+    return view('welcome', compact('nama_desa'));
 });
-
+Route::get('/test', function () {
+    return view('test');
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
-Route::get('/livewire/pemilih',function () {
-    return view('livewire.home');
-})->middleware(['auth'])->name('livewire_pemilih');
 
 require __DIR__.'/auth.php';
 

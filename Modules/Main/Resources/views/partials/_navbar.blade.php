@@ -4,7 +4,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a href="." class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pr-0 pr-md-3">
-            <img src="{{asset('tabler/static/logo-white.svg')}}" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+            <img src="{{asset('images/logo_pilkades_'.config('global.desa.nama').'.png')}}" width="120" height="40" alt="Tabler" class="navbar-brand-image">
         </a>
         <div class="navbar-nav flex-row order-md-last">
             <div class="nav-item dropdown d-none d-md-flex mr-3">

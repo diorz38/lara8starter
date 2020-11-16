@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Modules\Main\Entities\CalonPemilih;
 use App\Models\User;
 use Request;
+use Illuminate\Http\Request as req;
 use Illuminate\Support\Facades\Validator;
-// use Illuminate\Support\Facades\Input;
 use Exception;
 
 class CalonPemilihsController extends Controller
@@ -30,15 +30,29 @@ class CalonPemilihsController extends Controller
     {
         $nama_desa = config('global.desa.nama');
         // return $settings = app('settings');
-        $calonPemilihs = CalonPemilih::whereNotIn('status',['1','7'])->with('user')->simplepaginate(25);
+        $calonPemilihs = CalonPemilih::whereNotIn('status',['1','7'])->with('user')->paginate(25);
 
         // return $calonPemilihs;
         return view('main::calon_pemilih.index', compact('calonPemilihs','nama_desa'));
     }
+    public function cari(req $request)
+	{
+		$cari = $request->cari;
+
+        $calonPemilihs = CalonPemilih::where('nama','like',"%".$cari."%")
+        ->orWhere('nik','like',"%".$cari."%")
+        ->paginate();
+
+        $nama_desa = config('global.desa.nama');
+
+        return view('main::calon_pemilih.index', compact('calonPemilihs','nama_desa'));
+
+    }
 
     public function livewire()
     {
-        return view('main::livewire.home');
+        $nama_desa = config('global.desa.nama');
+        return view('main::livewire.home', compact('nama_desa'));
     }
 
     /**
@@ -56,25 +70,47 @@ class CalonPemilihsController extends Controller
     /**
      * Store a new calon pemilih in the storage.
      *
-     * @param Illuminate\Http\Request $request
      *
      * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
-        try {
+        $rules = [
+            'user_id' => 'required',
+            'no_tps' => 'nullable|string|min:1|max:11',
+            'no_dps' => 'nullable|string|min:1|max:11',
+            'nama' => 'required|string|min:3',
+            'jkel' => 'required',
+            'tempat_lahir' => 'required|string|min:1',
+            'tgl_lahir' => 'required',
+            'status_kawin' => 'nullable',
+            'nik' => 'required|string|min:16|max:16',
+            'dusun' => 'required|string|min:5',
+            'rt' => 'required|string|min:1|max:3',
+            'rw' => 'required|string|min:1|max:3',
+            'syarat' => 'required|array',
+            'status' => 'required|string|min:1|max:191',
+        ];
 
-            $data = $this->getData($request);
+        $data = $request::all();
+        $validator = Validator::make($data, $rules);
+        // check if the validator failed -----------------------
+        if ($validator->fails()) {
 
-            CalonPemilih::create($data);
+            // get the error messages from the validator
+            $messages = $validator->messages();
 
-            return redirect()->route('calon_pemilihs.calon_pemilih.index')
-                ->with('success_message', 'Calon Pemilih was successfully added.');
-        } catch (Exception $exception) {
+            // redirect our user back to the form with the errors from the validator
+            return back()->withInput()->withErrors($validator);
 
-            return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+        } else {
+
+            $calonPemilih = CalonPemilih::create($data);
+            // return $data;
+            $calonPemilih->update($data);
+            return redirect()->route('calon_pemilihs.calon_pemilih.index')->with('success_message', 'Perubahan Data Calon Pemilih berhasil disimpan');
         }
+
     }
 
     /**
@@ -146,20 +182,10 @@ class CalonPemilihsController extends Controller
             return back()->withInput()->withErrors($validator);
 
         } else {
-            // $data = $request->only(['user_id', 'no_tps', 'no_dps', 'nama', 'jkel', 'tempat_lahir', 'tgl_lahir', 'status_kawin', 'nik', 'dusun', 'rt', 'rw', 'syarat', 'status']);
-            // return $data;
             $calonPemilih = CalonPemilih::findOrFail($id);
-            // return $data;
             $calonPemilih->update($data);
             return redirect()->route('calon_pemilihs.calon_pemilih.index')->with('success_message', 'Perubahan Data Calon Pemilih berhasil disimpan');
-        }        //     $calonPemilih->update($data);
-
-        //     return redirect()->route('calon_pemilihs.calon_pemilih.index')
-        //         ->with('success_message', 'Calon Pemilih was successfully updated.');
-        // } catch (Exception $exception) {
-
-        //     return back()->withInput()
-        //         ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+        }
     }
 
     /**
@@ -210,12 +236,7 @@ class CalonPemilihsController extends Controller
             'syarat' => 'required|array',
             'status' => 'required',
         ];
-
-
-        $data = $request->validate($rules);
-
-
-
+        $data = Validator::make($request::all(), $rules);
 
         return $data;
     }

@@ -4,17 +4,37 @@
 <script>
 $checkboxes = $('#Form2 input:checkbox');
 $checkboxes.on('click', checkboxes);
-
+$('#tmbl-status').hide();
 function checkboxes() {
     var allChecked = $checkboxes.not(':checked').length == 0;
-    console.log(allChecked);
+    if(allChecked === true){
+        $('#tmbl-status').show();
+        $('#ok').show();
+        console.log(allChecked);
+    }else{
+        $('#tmbl-status').hide();
+        $('#ok').hide();
+        console.log(allChecked);
+    }
+}
+</script>
+<script>
+var i;
+for (i = {{(int)$calonPemilihs->first()->id}}; i < {{$calonPemilihs->count()}}; ++i) {
+    // do something with `substr[i]`
 }
 </script>
 @endpush
 
 @section('content')
 <div class="container-xl">
-
+    @if ($errors->any())
+        <ul class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
     @if(Session::has('success_message'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <div class="row align-items-center">
@@ -88,18 +108,24 @@ function checkboxes() {
                 </div>
                 <div class="card-body border-bottom py-3">
                     <div class="d-flex">
-                        <div class="text-muted">
+                        {{-- <div class="text-muted">
                             Show
                             <div class="mx-2 d-inline-block">
                                 <input type="text" class="form-control form-control-sm" value="8" size="3">
                             </div>
                             entries
-                        </div>
+                        </div> --}}
                         <div class="ml-auto text-muted">
-                            Search:
+                            <div class="ml-2 d-inline-block">
+                                <form action="{{ route('calon_pemilihs.calon_pemilih.cari') }}" method="GET">
+                                    <input type="text" name="cari" placeholder="Cari NIK atau Nama .." value="{{ old('cari') }}" class="form-control form-control-sm">
+                                    <input type="submit" value="CARI" class="button btn-sm" hidden>
+                                </form>
+                            </div>
+                            {{-- Search:
                             <div class="ml-2 d-inline-block">
                                 <input type="text" class="form-control form-control-sm">
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -116,7 +142,7 @@ function checkboxes() {
                         <input type=checkbox name="us3" value="Sal" ID="Checkbox3"><label>Sal</>
                     </form>
                 </div> --}}
-
+                <div class="card-body">
                 <div class="table-responsive">
                     <table class="table card-table table-vcenter text-nowrap datatable">
                         <thead>
@@ -157,16 +183,16 @@ function checkboxes() {
                                 </td>
                                 <td class="text-right">
                                     <div class="btn-group" role="group" aria-label="Aksi">
-                                        <a href="#" data-toggle="modal" data-target="#modal-pemilih{{$calonPemilih->id}}" tabindex="-1" type="button" class="btn btn-icon btn-primary">
+                                        <form method="POST" action="{!! route('calon_pemilihs.calon_pemilih.destroy', $calonPemilih->id) !!}" accept-charset="UTF-8">
+                                            <input name="_method" value="DELETE" type="hidden">
+                                            {{ csrf_field() }}
+                                        {{-- <button href="#" data-toggle="modal" data-target="#modal-pemilih{{$calonPemilih->id}}" tabindex="-1" type="button" class="btn btn-icon btn-primary">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                 <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3"></path><path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3"></path>
                                                 <line x1="16" y1="5" x2="19" y2="8"></line>
                                             </svg>
-                                        </a>
-                                        <form method="POST" action="{!! route('calon_pemilihs.calon_pemilih.destroy', $calonPemilih->id) !!}" accept-charset="UTF-8">
-                                            <input name="_method" value="DELETE" type="hidden">
-                                            {{ csrf_field() }}
+                                        </button> --}}
                                             <button type="submit" class="btn btn-icon btn-danger" onclick="return confirm(&quot;Click Ok to delete Calon Pemilih.&quot;)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M10 10l4 4m0 -4l-4 4"></path>
@@ -207,12 +233,13 @@ function checkboxes() {
                         </tbody>
                     </table>
                 </div>
-
-                <div class="card-footer d-flex align-items-center">
-                    {!! $calonPemilihs->render() !!}
+                </div>
+                <div class="card-footer d-flex">
+                    {{ $calonPemilihs->links('vendor.pagination.semantic-ui') }}
                 </div>
                 @endif
             </div>
         </div>
     </div>
+</div>
 @endsection

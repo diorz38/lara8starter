@@ -1,6 +1,8 @@
 <?php
 
 use Modules\Main\Http\Controllers\CalonPemilihsController;
+use Modules\Main\Http\Controllers\KeluargaLaratableController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +16,7 @@ use Modules\Main\Http\Controllers\CalonPemilihsController;
 
 Route::prefix('main')->group(function() {
     Route::get('/', 'MainController@index')->name('home');
+    Route::get('/test', 'MainController@test')->name('test');
     Route::get('/livewire/pemilih', 'CalonPemilihsController@livewire')->name('main_livewire_pemilih');
 
     Route::group([
@@ -21,6 +24,9 @@ Route::prefix('main')->group(function() {
     ], function () {
         Route::get('/', [CalonPemilihsController::class,'index'])
             ->name('calon_pemilihs.calon_pemilih.index');
+        Route::get('/cari', [CalonPemilihsController::class,'cari'])
+            ->name('calon_pemilihs.calon_pemilih.cari');
+
         Route::get('/create',[CalonPemilihsController::class,'create'])
             ->name('calon_pemilihs.calon_pemilih.create');
         Route::get('/show/{calonPemilih}',[CalonPemilihsController::class,'show'])

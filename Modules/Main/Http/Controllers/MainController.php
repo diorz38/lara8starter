@@ -26,6 +26,11 @@ class MainController extends Controller
         // return view('main::index');
         return view('main::dashboard');
     }
+    public function test()
+    {
+        // return view('main::index');
+        return view('main::index');
+    }
 
     /**
      * Show the form for creating a new resource.

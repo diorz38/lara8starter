@@ -1,45 +1,38 @@
 <div class="modal-body">
 
-    <div class="mb-3">
-        <label class="form-label">Validation States</label>
-        <input type="text" class="form-control is-valid mb-2" placeholder="Valid State..">
-        <input type="text" class="form-control is-invalid" placeholder="Invalid State..">
-        <div class="invalid-feedback">Invalid feedback</div>
-    </div>
-
-    <input class="form-control" name="user_id" type="hidden" id="user_id" value="{{ old('user_id', optional($calonPemilih)->user_id) }}">
+    <input class="form-control" name="user_id" type="hidden" id="user_id" value="{{ old('user_id', \Auth::id()) }}">
     <input class="form-control" name="no_tps" type="hidden" id="no_dps" value="{{ old('no_dps', optional($calonPemilih)->no_dps) }}">
     <div class="row">
         <div class="col-3">
-            <div class="form-group {{ $errors->has('no_tps') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('no_tps') ? 'is-invalid' : '' }}">
                 <label for="no_tps" class="col-md-6 control-label">No Tps</label>
                 <div class="col-md-12">
                     <input class="form-control" name="no_tps" type="text" id="no_tps" value="{{ old('no_tps', optional($calonPemilih)->no_tps) }}" maxlength="11" placeholder="Enter no tps here...">
-                    {!! $errors->first('no_tps', '<p class="help-block">:message</p>') !!}
+                    {!! $errors->first('no_tps', '<class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
         </div>
         <div class="col-9">
-            <div class="form-group {{ $errors->has('nik') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('nik') ? 'is-invalid' : '' }}">
                 <label for="nik" class="col-md-6 control-label">NIK</label>
                 <div class="col-md-12">
                     <input class="form-control" name="nik" type="text" id="nik" value="{{ old('nik', optional($calonPemilih)->nik) }}" minlength="1" maxlength="16" required="true" placeholder="Enter nik here...">
-                    {!! $errors->first('nik', '<p class="help-block">:message</p>') !!}
+                    {!! $errors->first('nik', '<class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="form-group {{ $errors->has('nama') ? 'has-error' : '' }}">
+    <div class="form-group {{ $errors->has('nama') ? 'is-invalid' : '' }}">
         <label for="nama" class="col-md-10 control-label">Nama</label>
         <div class="col-md-12">
             <input class="form-control" name="nama" type="text" id="nama" value="{{ old('nama', optional($calonPemilih)->nama) }}" minlength="1" maxlength="37" required="true" placeholder="Enter nama here...">
-            {!! $errors->first('nama', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('nama', '<class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
     <div class="row">
         <div class="col-6">
-            <div class="form-group {{ $errors->has('jkel') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('jkel') ? 'is-invalid' : '' }}">
                 <label for="jkel" class="col-md-10 control-label">Jkel</label>
                 <div class="col-md-12">
                     <div class="radio">
@@ -55,12 +48,12 @@
                         </label>
                     </div>
 
-                    {!! $errors->first('jkel', '<p class="help-block">:message</p>') !!}
+                    {!! $errors->first('jkel', '<class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
         </div>
         <div class="col-6">
-            <div class="form-group {{ $errors->has('status_kawin') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('status_kawin') ? 'is-invalid' : '' }}">
                 <label for="status_kawin" class="col-md-10 control-label">Status Kawin</label>
                 <div class="col-md-12">
                     <div class="radio">
@@ -88,27 +81,27 @@
                         </label>
                     </div>
 
-                    {!! $errors->first('status_kawin', '<p class="help-block">:message</p>') !!}
+                    {!! $errors->first('status_kawin', '<class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-8">
-            <div class="form-group {{ $errors->has('tempat_lahir') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('tempat_lahir') ? 'is-invalid' : '' }}">
                 <label for="tempat_lahir" class="col-md-10 control-label">Tempat Lahir</label>
                 <div class="col-md-12">
                     <input class="form-control" name="tempat_lahir" type="text" id="tempat_lahir" value="{{ old('tempat_lahir', optional($calonPemilih)->tempat_lahir) }}" minlength="1" maxlength="18" required="true" placeholder="Enter tempat lahir here...">
-                    {!! $errors->first('tempat_lahir', '<p class="help-block">:message</p>') !!}
+                    {!! $errors->first('tempat_lahir', '<class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
         </div>
         <div class="col-4">
-            <div class="form-group {{ $errors->has('tgl_lahir') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('tgl_lahir') ? 'is-invalid' : '' }}">
                 <label for="tgl_lahir" class="col-md-10 control-label">Tgl Lahir</label>
                 <div class="col-md-12">
                     <input class="form-control" name="tgl_lahir" type="date" id="tgl_lahir" value="{{ old('tgl_lahir', optional($calonPemilih)->tgl_lahir) }}" required="true" placeholder="dd-mm-yyyy" max="2020-12-31">
-                    {!! $errors->first('tgl_lahir', '<p class="help-block">:message</p>') !!}
+                    {!! $errors->first('tgl_lahir', '<class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
         </div>
@@ -116,47 +109,47 @@
     <div class="hr-text">Alamat</div>
     <div class="row">
         <div class="col-6">
-            <div class="form-group {{ $errors->has('dusun') ? 'has-error' : '' }}">
+            <div class="form-group {{ $errors->has('dusun') ? 'is-invalid' : '' }}">
                 <label for="dusun" class="col-md-10 control-label">Dusun</label>
                 <div class="col-md-12">
                     <input class="form-control" name="dusun" type="text" id="dusun" value="{{ old('dusun', optional($calonPemilih)->dusun) }}" minlength="1" maxlength="16" required="true" placeholder="Enter dusun here...">
-                    {!! $errors->first('dusun', '<p class="help-block">:message</p>') !!}
+                    {!! $errors->first('dusun', '<class="invalid-feedback">:message</p>') !!}
                 </div>
             </div>
         </div>
         <div class="col-6">
             <div class="row">
                 <div class="col-6">
-                    <div class="form-group {{ $errors->has('rt') ? 'has-error' : '' }}">
+                    <div class="form-group {{ $errors->has('rt') ? 'is-invalid' : '' }}">
                         <label for="rt" class="col-md-10 control-label">Rt</label>
                         <div class="col-md-12">
                             <input class="form-control" name="rt" type="text" id="rt" value="{{ old('rt', optional($calonPemilih)->rt) }}" minlength="1" maxlength="3" required="true" placeholder="Enter rt here...">
-                            {!! $errors->first('rt', '<p class="help-block">:message</p>') !!}
+                            {!! $errors->first('rt', '<class="invalid-feedback">:message</p>') !!}
                         </div>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="form-group {{ $errors->has('rw') ? 'has-error' : '' }}">
+                    <div class="form-group {{ $errors->has('rw') ? 'is-invalid' : '' }}">
                         <label for="rw" class="col-md-10 control-label">Rw</label>
                         <div class="col-md-12">
                             <input class="form-control" name="rw" type="text" id="rw" value="{{ old('rw', optional($calonPemilih)->rw) }}" minlength="1" maxlength="3" required="true" placeholder="Enter rw here...">
-                            {!! $errors->first('rw', '<p class="help-block">:message</p>') !!}
+                            {!! $errors->first('rw', '<class="invalid-feedback">:message</p>') !!}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="form-group {{ $errors->has('desa') ? 'has-error' : '' }}">
+    <div class="form-group {{ $errors->has('desa') ? 'is-invalid' : '' }}">
         <label for="desa" class="col-md-10 control-label">Desa</label>
         <div class="col-md-12">
             <input class="form-control" name="desa" type="text" id="desa" value="{{ old('desa', optional($calonPemilih)->desa) }}" minlength="1" maxlength="25" required="true" placeholder="Enter desa here...">
-            {!! $errors->first('desa', '<p class="help-block">:message</p>') !!}
+            {!! $errors->first('desa', '<class="invalid-feedback">:message</p>') !!}
         </div>
     </div>
     <div class="hr-text">Syarat & Status Pemilih</div>
     <label class="form-label">Syarat</label>
-    <div class="form-selectgroup-boxes row mb-3" ID="Form2">
+<div class="form-selectgroup-boxes row mb-3" ID="Form2" aria-required="true">
         <div class="col-lg-6">
             <label class="form-selectgroup-item">
                 <input type="checkbox" id="syarat_1" name="syarat[]" value="1" {{ in_array('1', old('syarat', optional($calonPemilih)->syarat) ?: []) ? 'checked' : '' }} class="form-selectgroup-input">
@@ -227,7 +220,7 @@
     <div class="mb-3">
         @if(optional($calonPemilih)->no_dps)
         <div class="form-label">Toggle switches</div>
-        <label class="form-check form-switch">
+    <label class="form-check form-switch" id="ok">
             <input id="status_1" name="status" value="1" required="true" class="form-check-input" type="radio" {{ old('status', optional($calonPemilih)->status) == '1' ? 'checked' : '' }}>
             <span class="form-check-label">MEMENUHI SYARAT SEBAGAI PEMILIH</span>
         </label>
@@ -252,10 +245,6 @@
             <span class="form-check-label">MENINGGAL DUNIA</span>
         </label>
         @endif
-        <label class="form-check form-switch">
-            <input id="status_7" name="status" value="7" required="true" class="form-check-input" type="radio" {{ old('status', optional($calonPemilih)->status) == '7' ? 'checked' : '' }}>
-            <span class="form-check-label">MEMENUHI SYARAT SEBAGAI PEMILIH TAMBAHAN</span>
-        </label>
     </div>
 
 </div>

@@ -1,9 +1,7 @@
-@extends('main::layouts.master')
+@extends('main::layouts.main')
 
 @section('content')
-    <h1>Hello World</h1>
-
-    <p>
-        This view is loaded from module: {!! config('main.name') !!}
-    </p>
+<div class="container-xl">
+    @livewire('daftar-sls.index')
+</div>
 @endsection

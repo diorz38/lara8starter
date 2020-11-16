@@ -7,7 +7,7 @@ use App\Models\User;
 
 class Users extends Component
 {
-    public $users, $name, $email, $user_id;
+    public $users, $name, $email, $password, $user_id;
     public $updateMode = false;
 
     public function render()
@@ -19,16 +19,19 @@ class Users extends Component
     private function resetInputFields(){
         $this->name = '';
         $this->email = '';
+        $this->password = '';
     }
 
     public function store()
     {
-        $validatedData = $this->validate([
+        $this->password = bcrypt($this->password);
+        $validatedDate = $this->validate([
             'name' => 'required',
             'email' => 'required|email',
+            'password' => 'required',
         ]);
 
-        User::create($validatedData);
+        User::create($validatedDate);
 
         session()->flash('message', 'Users Created Successfully.');
 
