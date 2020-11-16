@@ -1,56 +1,95 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<!doctype html>
+<html lang="en">
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>PILKADES - {{config('global.desa.nama')}}.</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <meta name="msapplication-TileColor" content="#206bc4" />
+    <meta name="theme-color" content="#206bc4" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <link rel="icon" href="{{asset('tabler/favicon.ico')}}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{asset('tabler/favicon.ico')}}" type="image/x-icon" />
+    <!-- CSS files -->
+    <link href="{{asset('tabler/dist/css/tabler.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('tabler/dist/css/tabler-flags.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('tabler/dist/css/tabler-payments.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('tabler/dist/css/demo.min.css')}}" rel="stylesheet" />
+    <style>
+        body {
+            display: none;
+        }
+    </style>
+</head>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" required autofocus />
+<body class="antialiased border-top-wide border-primary d-flex flex-column">
+    <div class="flex-fill d-flex flex-column justify-content-center">
+        <div class="container-tight py-6">
+            <div class="text-center mb-5">
+                <a href="."><img src="{{asset('tabler/static/logo.svg')}}" height="36" alt=""></a>
             </div>
+            <form class="card card-md" method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="card-body">
+                    <h2 class="mb-5 text-center">Login to your account</h2>
+                    <div class="mb-3">
+                        <label class="form-label">Email address</label>
+                        <input id="email" name="email" type="email" class="form-control" placeholder="Enter email" autocomplete="off">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">
+                            Password
+                            <span class="form-label-description">
+                                <a href="./forgot-password.html">I forgot password</a>
+                            </span>
+                        </label>
+                        <div class="input-group input-group-flat">
+                            <input id="password" name="password" type="password" class="form-control" placeholder="Password">
+                            <span class="input-group-text">
+                                <a href="#" class="link-secondary" title="Show password" data-toggle="tooltip"><svg
+                                        xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <circle cx="12" cy="12" r="2" />
+                                        <path
+                                            d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" />
+                                        </svg>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-check">
+                            <input type="checkbox" class="form-check-input" />
+                            <span class="form-check-label">Remember me on this device</span>
+                        </label>
+                    </div>
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary w-100">Sign in</button>
+                    </div>
+                </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+            </form>
+            <div class="text-center text-muted mt">
+                Don't have account yet? <a href="./sign-up.html" tabindex="-1">Sign up</a>
             </div>
+        </div>
+    </div>
+    <!-- Libs JS -->
+    <script src="{{asset('tabler/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+    <!-- Tabler Core -->
+    <script src="{{asset('tabler/dist/js/tabler.min.js')}}"></script>
+    <script>
+        document.body.style.display = "block"
+    </script>
+</body>
 
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <input id="remember_me" type="checkbox" class="form-checkbox" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ml-3">
-                    {{ __('Login') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+</html>

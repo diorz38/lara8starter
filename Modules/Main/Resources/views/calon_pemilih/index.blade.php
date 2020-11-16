@@ -76,22 +76,21 @@ for (i = {{(int)$calonPemilihs->first()->id}}; i < {{$calonPemilihs->count()}}; 
             </div>
             <!-- Page title actions -->
             <div class="col-auto ml-auto d-print-none">
-                <div class="btn-list">
+                <div class="btn-list btn-block">
                     <span class="d-none d-sm-inline">
                         <a href="#" class="btn btn-white">
-                            New view
+                            List Keluarga
                         </a>
                     </span>
-                    <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-toggle="modal"
-                        data-target="#modal-pemilih_tambahan">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <line x1="12" y1="5" x2="12" y2="19" />
-                            <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                        TAMBAHAN
-                    </a>
+                    {{-- <span class="m-none btn-icons d-sm-inline">
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-pemilih_tambahan">
+                            TAMBAHAN
+                        </a>
+                    </span> --}}
+
+                    <span class="d-sm-inline"><a href="#" class="btn btn-primary" data-toggle="modal"
+                        data-target="#modal-pemilih_tambahan" title="Data Tambahan">+</a>
+                    </span>
                 </div>
             </div>
         </div>

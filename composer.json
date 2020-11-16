@@ -16,7 +16,8 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.3",
-        "nwidart/laravel-modules": "^8.0"
+        "nwidart/laravel-modules": "^8.0",
+        "silviolleite/laravelpwa": "^2.0"
     },
     "require-dev": {
         "crestapps/laravel-code-generator": "^2.4",
